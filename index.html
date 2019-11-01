@@ -189,14 +189,16 @@
         function write(spellsByClass) {
             let classes = Object.keys(spellsByClass).sort();
             let stringBuilder = new StringBuilder();
+            
+            stringBuilder
+                .append("<div class='spellList'>")
+                .newLine().newLine();
 
             for (let caster of classes) {
                 stringBuilder
-                    .append('### ')
+                    .append('#### ')
                     .append(caster)
                     .append(' Spells')
-                    .newLine().newLine()
-                    .append("<div class='spellList'>");
 
                 function add(key, name) {
                     stringBuilder
@@ -219,21 +221,16 @@
                 add("0", "Cantrips (0 Level)");
 
                 for (i = 1; i < 10; i++) {
-                    if (i % 3 == 0) {
-                        stringBuilder
-                            .newLine().newLine()
-                            .append("\\columnbreak");
-                    }
                     n = i.toString();
                     add(n, n + getPrefix(n) + " Level");
                 }
 
                 stringBuilder
-                    .newLine().newLine()
-                    .append("</div>")
                     .newLine().newLine();
             }
 
+            stringBuilder.append("</div>");
+            
             return stringBuilder.toString();
         }
 
