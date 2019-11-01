@@ -9,11 +9,11 @@
                 <div>
                     <h3>Configuration</h3>
                     <div>
-                        <label>
+                        <label title='Include "(ritual) next to the name of the spell.'>
                             <input type="checkbox" id="includeRitual" /> Include ritual tag.
                         </label>
                     </div>
-                    <label>
+                    <label title='Include the school of the spell next to its name.'>
                         <input type="checkbox" id="includeSchool" /> Include school tag.
                     </label>
                     <label id="schoolAddition" title='Amount of characters to show. For example, if choose 5, "Transmutation" would become "Trans.". Use -1 to get all text, ie: "Transmutation".' hidden>
@@ -37,7 +37,23 @@
             </div>
         </div>
         <div style="width: 70%; height: 100%">
-            <textarea id="text" style="width: 100%; height: 100%" placeholder="Introduce spells text."></textarea>
+            <textarea id="text" style="width: 100%; height: 100%; white-space: pre-line; resize: none"
+                      placeholder='Introduce spells text.
+                                   
+                                   Each spell must include a "- **Classes:**" item in its spell block.
+                                   
+                                   For example:
+                                   
+                                    #### Generic spell
+                                    *1st-level transmutation (ritual)*
+                                    ___
+                                    - **Casting Time:** 1 action
+                                    - **Range:** Touch
+                                    - **Components:** V, S
+                                    - **Duration:** Concentration, up to 1 hour
+                                    - **Classes:** Sorcerer, Wizard
+                                    ___
+                                    You touch a creature and perform a generic spell on it.'></textarea>
         </div>
     </div>
     <script>
