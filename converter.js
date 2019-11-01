@@ -32,7 +32,7 @@ schoolInput.addEventListener("input", () => {
 });
 
 const regexSanitize = /\/\*.*?\*\//gsm;
-const spellRegex = /#### ?((?:\w+ ?)+)\n\*(?:(\d)\w{2}-level )?(\w+)(?:(?: )(cantrip))?(?: (\(ritual\)))?\*\n___\n((?:- \*\*(?:\w+ ?)+:\*\*[ \w\d,()\.]+\n)+)___/gm;
+const spellRegex = /#### ?((?:\w+ ?)+)\n\*(?:(\d)\w{2}-level )?(\w+)(?:(?: )(cantrip))?(?: (\(ritual\)))?(?:, )?((?:\w+,? ?)+)\*\n___\n((?:- \*\*(?:\w+ ?)+:\*\*[ \w\d,()\.]+\n)+)___/gm;
 const classesRegex = /- \*\*Classes:\*\* ?((?:\w+,? ?)+)/m;
 
 function sanitize(text) {
@@ -49,15 +49,22 @@ function read(text, includeRitual, includeSchool) {
     for (let spell of text.matchAll(spellRegex)) {
         let name = spell[1];
 
-        let classesMatch = classesRegex.exec(spell[6]);
+        let classesMatch = classesRegex.exec(spell[7]);
+        let classes;
         if (classesMatch == undefined) {
-            console.log(`Spell ${name} doesn't have a classes section.`);
+            if (spell[6] == undefined) {
+                console.log(`Spell ${name} doesn't have a classes section.`);
 
-            let il = document.createElement("li");
-            il.innerHTML = `Spell <i>${name}</i> doesn't have a classes section.`;
-            errorsList.appendChild(il);
-            errors.removeAttribute("hidden");
-            continue;
+                let il = document.createElement("li");
+                il.innerHTML = `Spell <i>${name}</i> doesn't have a classes section.`;
+                errorsList.appendChild(il);
+                errors.removeAttribute("hidden");
+                continue;
+            } else {
+                classes = spell[6].split(', ');
+            }    
+        } else {
+            classes = classesMatch[1].split(', ');
         }
 
         let level = spell[2];
@@ -84,9 +91,7 @@ function read(text, includeRitual, includeSchool) {
             name += "*"
         }
 
-        let school = spell[3];
-
-        let classes = classesMatch[1].split(', ')
+        let school = spell[3];        
 
         for (let caster of classes) {
             caster = capitalize(caster);
