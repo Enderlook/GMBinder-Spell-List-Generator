@@ -32,7 +32,7 @@ schoolInput.addEventListener("input", () => {
 });
 
 const regexSanitize = /\/\*.*?\*\//gsm;
-const spellRegex = /#### ?((?:\w+ ?)+)\n\*(?:(\d)\w{2}-level )?(\w+)(?:(?: )(cantrip))?(?: (\(ritual\)))?(?:, )?((?:\w+,? ?)+)\*\n___\n((?:- \*\*(?:\w+ ?)+:\*\*[ \w\d,()\.]+\n)+)___/gm;
+const spellRegex = /#### ?((?:\w+ ?)+)\n\*(?:(\d)\w{2}-level )?(\w+)(?: (cantrip))?(?: (\(ritual\)))?(?:, ((?:\w+,? ?)+))?\*\n___\n((?:- \*\*(?:\w+ ?)+:\*\*[ \w\d,()\.]+\n)+)___/gm;
 const classesRegex = /- \*\*Classes:\*\* ?((?:\w+,? ?)+)/m;
 
 function sanitize(text) {
