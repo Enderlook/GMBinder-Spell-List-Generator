@@ -7,7 +7,7 @@
     <div>
         <div>
             <div>
-                <div>
+                <div>                    
                     <h3>Configuration</h3>
                     <div>
                         <label title='Include "(ritual) next to the name of the spell.'>
@@ -26,10 +26,15 @@
                     </label>
                 </div>
                 <div>
-                    <button id="convert">
-                        <h3>Convert</h3></button>
-                    <button id="clean">
-                        <h3>Clean</h3></button>
+                    <button id="convert" title="Read all the spell from the text box and turn them into spell lists by class.">
+                        <h3>Make Spell List</h3>
+                    </button>
+                    <button id="clean" title="Clean the text box.">
+                        <h3>Clean</h3>
+                    </button>
+                    <button id="sort" title="Sort the spells alphabetically.">
+                        <h3>Sort Spells</h3>
+                    </button>
                     <div id="errors" hidden>
                         <h3>Errors:</h3>
                         <ul id="errorsList"></ul>
@@ -41,35 +46,51 @@
             <textarea id="text"
                       placeholder='Introduce spells text.
                                    
+                                   
+                                   
+                                   Make Spell List button:
+                                   
                                    Each spell must include a "- **Classes:**" item in its spell block.
                                    
                                    For example:
                                    
-                                    #### Generic spell
-                                    *1st-level transmutation (ritual)*
-                                    ___
-                                    - **Casting Time:** 1 action
-                                    - **Range:** Touch
-                                    - **Components:** V, S
-                                    - **Duration:** Concentration, up to 1 hour
-                                    - **Classes:** Sorcerer, Wizard
-                                    ___
-                                    You touch a creature and perform a generic spell on it.
+                                   #### Generic spell
+                                   *1st-level transmutation (ritual)*
+                                   ___
+                                   - **Casting Time:** 1 action
+                                   - **Range:** Touch
+                                   - **Components:** V, S
+                                   - **Duration:** Concentration, up to 1 hour
+                                   - **Classes:** Sorcerer, Wizard
+                                   ___
+                                   You touch a creature and perform a generic spell on it.
                                    
                                    Alternatively, you can write the classes below the name, as:
                                    
                                    #### Generic spell
-                                    *1st-level transmutation (ritual), Sorcerer, Wizard*
-                                    ___
-                                    - **Casting Time:** 1 action
-                                    - **Range:** Touch
-                                    - **Components:** V, S
-                                    - **Duration:** Concentration, up to 1 hour
-                                    ___
-                                    You touch a creature and perform a generic spell on it.                                   
+                                   *1st-level transmutation (ritual), Sorcerer, Wizard*
+                                   ___
+                                   - **Casting Time:** 1 action
+                                   - **Range:** Touch
+                                   - **Components:** V, S
+                                   - **Duration:** Concentration, up to 1 hour
+                                   ___
+                                   You touch a creature and perform a generic spell on it.
+                                   
+                                   
+                                   
+                                   Sort Spells button:
+                                   
+                                   To sort spells alphabetically, each one must include 4 time the symbol "#" at the beginning of its name, like the spells above. The whitespace between the last "#" and the name is optional, since this script will add it automatically on each one.
+                                   
+                                   Be warned that the script can not add nor remove "\pagebreak" nor "\pagebreaknum", that must be done manually by you.
+                                   
+                                   Made by Enderlook (Discord Enderlook#6517).                                   
                                    '></textarea>
         </div>
     </div>
+    <script src="common.js"></script>
     <script src="converter.js"></script>
+    <script src="sorter.js"></script>
 </body>
 </html>

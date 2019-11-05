@@ -1,11 +1,9 @@
-let text = document.getElementById("text");
 let includeRitual = document.getElementById("includeRitual");
 let includeSchool = document.getElementById("includeSchool");
 let schoolRange = document.getElementById("schoolRange");
 let schoolInput = document.getElementById("schoolInput");
 let schoolAddition = document.getElementById("schoolAddition");
 let convert = document.getElementById("convert");
-let clean = document.getElementById("clean");
 let errors = document.getElementById("errors");
 let errorsList = document.getElementById("errorsList");
 
@@ -213,14 +211,6 @@ convert.addEventListener("click", () => {
 
     let result = sumarize(text.value, includeRitual.checked, schoolSize);
     console.log(result);
-    text.value = result;
-
-    text.select();
-    document.execCommand("copy");
+    
+    writeToText(result);
 })
-
-clean.addEventListener("click", () => {
-    text.value = "";
-    errors.setAttribute("hidden", true);
-    errorsList.innerHTML = "";
-});
