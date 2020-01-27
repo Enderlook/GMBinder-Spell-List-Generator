@@ -199,6 +199,13 @@ function sumarize(text, includeRitual, includeSchool) {
 }
 
 convert.addEventListener("click", () => {
+	ga('send', { // Google Analytics
+	  hitType: 'event',
+	  eventCategory: 'button',
+	  eventAction: 'click',
+	  eventLabel: 'convert'
+	});
+	
     errors.setAttribute("hidden", true);
     errorsList.innerHTML = "";
 
