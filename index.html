@@ -23,16 +23,23 @@
                             <input type="checkbox" id="includeRitual" /> Include ritual tag.
                         </label>
                     </div>
-                    <label title='Include the school of the spell next to its name.'>
-                        <input type="checkbox" id="includeSchool" /> Include school tag.
-                    </label>
-                    <label id="schoolAddition" title='Amount of characters to show. For example, if choose 5, "Transmutation" would become "Trans.". Use -1 to get all text, ie: "Transmutation".' hidden>
-                        <p>Characters to show:</p>
-                        <div>
-                            <input id="schoolRange" type="range" min="-1" max="30" value="5" style="width: 50%">
-                            <input id="schoolInput" type="number" value="5" placeholder="Amount of characters to show" style="width: 50%" />
-                        </div>
-                    </label>
+                    <div>              
+                        <label title='Remove spell level section from the spell list which does have no spell.'>
+                            <input type="checkbox" id="removeEmptySections" /> Remove empty sections.
+                        </label>
+                    </div>
+                    <div>
+                        <label title='Include the school of the spell next to its name.'>
+                            <input type="checkbox" id="includeSchool" /> Include school tag.
+                        </label>
+                        <label id="schoolAddition" title='Amount of characters to show. For example, if choose 5, "Transmutation" would become "Trans.". Use -1 to get all text, ie: "Transmutation".' hidden>
+                            <p>Characters to show:</p>
+                            <div>
+                                <input id="schoolRange" type="range" min="-1" max="30" value="5" style="width: 50%">
+                                <input id="schoolInput" type="number" value="5" placeholder="Amount of characters to show" style="width: 50%" />
+                            </div>
+                        </label>
+                    </div>
                 </div>
                 <div>
                     <button id="convert" title="Read all the spell from the text box and turn them into spell lists by class.">

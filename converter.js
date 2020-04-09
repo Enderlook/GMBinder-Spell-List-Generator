@@ -1,5 +1,6 @@
 let includeRitual = document.getElementById("includeRitual");
 let includeSchool = document.getElementById("includeSchool");
+let removeEmptySections = document.getElementById("removeEmptySections");
 let schoolRange = document.getElementById("schoolRange");
 let schoolInput = document.getElementById("schoolInput");
 let schoolAddition = document.getElementById("schoolAddition");
@@ -87,9 +88,7 @@ function read(text, includeRitual, includeSchool) {
                 name += spell[3].substring(0, includeSchool) + ".";
             }
             name += "*"
-        }
-
-        let school = spell[3];        
+        }       
 
         for (let caster of classes) {
             caster = capitalize(caster);
@@ -161,11 +160,16 @@ function write(spellsByClass) {
             .append(' Spells')
 
         function add(key, name) {
+            let hasSpells = spellsByClass[caster][key] != undefined;
+            if (removeEmptySections && !hasSpells)
+                return;
+
             stringBuilder
                 .newLine().newLine()
                 .append("##### ")
                 .append(name);
-            if (spellsByClass[caster][key] != undefined) {
+
+            if (hasSpells) {
                 spellsByClass[caster][key].sort();
                 for (let spell of spellsByClass[caster][key]) {
                     stringBuilder
